@@ -1,5 +1,4 @@
-# R_ggplot_histogram
-R code for drawing hisogram with ggplot2 package
+# ggplot2 패키지로 히스토그램 그리기
 
 ## 기본 히스토그램 그리기
 
@@ -18,3 +17,12 @@ R code for drawing hisogram with ggplot2 package
 #### - 항목별로 나눠서 그리기 (facet): 가로로 나누기
 
 ## 범주형 데이터로 히스토그램 그리기
+
+
+
+# R_ggplot_histogram
+R code for drawing hisogram with ggplot2 package
+
+## Basic Histogram
+
+## Customized Basic Histogram
