@@ -1,70 +1,85 @@
 library(ggplot2)
 library(MASS)
 
-data("Cars93")   # MASS ÆĞÅ°Áö¿¡¼­ Cars93 µ¥ÀÌÅÍ¸¦ °¡Á®¿É´Ï´Ù.
-data("minn38")   # MASS ÆĞÅ°Áö¿¡¼­ minn98 µ¥ÀÌÅÍ¸¦ °¡Á®¿É´Ï´Ù.
+data("Cars93")   # MASS íŒ¨í‚¤ì§€ì—ì„œ Cars93 ë°ì´í„°ë¥¼ ê°€ì ¸ì˜µë‹ˆë‹¤.
+data("minn38")   # MASS íŒ¨í‚¤ì§€ì—ì„œ minn98 ë°ì´í„°ë¥¼ ê°€ì ¸ì˜µë‹ˆë‹¤.
 
-ggplot( Cars93, aes(x=Passengers)) +   # xÃà: Å¾½ÂÀÚ ¼ö, Å¾½ÂÀÚ ¼ö¿¡ µû¸¥ ºĞÆ÷¸¦ ±×·Áº¾´Ï´Ù.
-  geom_histogram()   # ±âº» histogramÀ» ±×¸³´Ï´Ù.
-ggsave("histogram_basic.jpg", dpi = 300)   # ggplot¸¦ ÀúÀåÇÕ´Ï´Ù.
+# Basic Histogram ##############################
+ggplot( Cars93, aes(x=Passengers)) +   # xì¶•: íƒ‘ìŠ¹ì ìˆ˜, íƒ‘ìŠ¹ì ìˆ˜ì— ë”°ë¥¸ ë¶„í¬ë¥¼ ê·¸ë ¤ë´…ë‹ˆë‹¤.
+  geom_histogram()   # ê¸°ë³¸ histogramì„ ê·¸ë¦½ë‹ˆë‹¤.
+ggsave("histogram_basic.jpg", dpi = 300)   # ggplotë¥¼ ì €ì¥í•©ë‹ˆë‹¤.
 
-ggplot( Cars93, aes(x=Passengers)) +   # xÃà: Å¾½ÂÀÚ ¼ö, Å¾½ÂÀÚ ¼ö¿¡ µû¸¥ ºĞÆ÷¸¦ ±×·Áº¾´Ï´Ù.
-  geom_histogram(fill="#F8766D")   # ³»ºÎ »ö»óÀ» ¼³Á¤ÇÕ´Ï´Ù.
-ggsave("histogram_col.jpg", dpi = 300)   # ggplot¸¦ ÀúÀåÇÕ´Ï´Ù.
+# Customized Basic Histogram ##############################
+## Add color for histogram bar ############################
+ggplot( Cars93, aes(x=Passengers)) +   # xì¶•: íƒ‘ìŠ¹ì ìˆ˜, íƒ‘ìŠ¹ì ìˆ˜ì— ë”°ë¥¸ ë¶„í¬ë¥¼ ê·¸ë ¤ë´…ë‹ˆë‹¤.
+  geom_histogram(fill="#F8766D")   # ë‚´ë¶€ ìƒ‰ìƒì„ ì„¤ì •í•©ë‹ˆë‹¤.
+ggsave("histogram_col.jpg", dpi = 300)   # ggplotë¥¼ ì €ì¥í•©ë‹ˆë‹¤.
 
-ggplot( Cars93, aes(x=Passengers)) +   # xÃà: Å¾½ÂÀÚ ¼ö, Å¾½ÂÀÚ ¼ö¿¡ µû¸¥ ºĞÆ÷¸¦ ±×·Áº¾´Ï´Ù.
-  geom_histogram(fill="#F8766D", colour="black")   # ³»ºÎ »ö»ó, ¶óÀÎ »ö»óÀ» ¼³Á¤ÇÕ´Ï´Ù. 
-ggsave("histogram_col_line.jpg", dpi = 300)   # ggplot¸¦ ÀúÀåÇÕ´Ï´Ù.
+## Add line for histogram bar #############################
+ggplot( Cars93, aes(x=Passengers)) +   # xì¶•: íƒ‘ìŠ¹ì ìˆ˜, íƒ‘ìŠ¹ì ìˆ˜ì— ë”°ë¥¸ ë¶„í¬ë¥¼ ê·¸ë ¤ë´…ë‹ˆë‹¤.
+  geom_histogram(fill="#F8766D", colour="black")   # ë‚´ë¶€ ìƒ‰ìƒ, ë¼ì¸ ìƒ‰ìƒì„ ì„¤ì •í•©ë‹ˆë‹¤. 
+ggsave("histogram_col_line.jpg", dpi = 300)   # ggplotë¥¼ ì €ì¥í•©ë‹ˆë‹¤.
 
-ggplot( Cars93, aes(x=Passengers)) +   # xÃà: Å¾½ÂÀÚ ¼ö, Å¾½ÂÀÚ ¼ö¿¡ µû¸¥ ºĞÆ÷¸¦ ±×·Áº¾´Ï´Ù.
-  geom_histogram(fill="#F8766D", colour="black", binwidth = 0.5)   # ³»ºÎ »ö»ó, ¶óÀÎ »ö»ó, ¹Ù µÎ²²¸¦ ¼³Á¤ÇÕ´Ï´Ù. 
-ggsave("histogram_col_line_width.jpg", dpi = 300)   # ggplot¸¦ ÀúÀåÇÕ´Ï´Ù.
+## Adjust width of histogram bar ##########################
+ggplot( Cars93, aes(x=Passengers)) +   # xì¶•: íƒ‘ìŠ¹ì ìˆ˜, íƒ‘ìŠ¹ì ìˆ˜ì— ë”°ë¥¸ ë¶„í¬ë¥¼ ê·¸ë ¤ë´…ë‹ˆë‹¤.
+  geom_histogram(fill="#F8766D", colour="black", binwidth = 0.5)   # ë‚´ë¶€ ìƒ‰ìƒ, ë¼ì¸ ìƒ‰ìƒ, ë°” ë‘ê»˜ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. 
+ggsave("histogram_col_line_width.jpg", dpi = 300)   # ggplotë¥¼ ì €ì¥í•©ë‹ˆë‹¤.
 
-ggplot( Cars93, aes(x=Passengers)) +   # xÃà: Å¾½ÂÀÚ ¼ö, Å¾½ÂÀÚ ¼ö¿¡ µû¸¥ ºĞÆ÷¸¦ ±×·Áº¾´Ï´Ù.
-  geom_histogram(fill="#F8766D", colour="black", binwidth = 0.5) +   # ³»ºÎ »ö»ó, ¶óÀÎ »ö»ó, ¹Ù µÎ²²¸¦ ¼³Á¤ÇÕ´Ï´Ù. 
-  scale_x_continuous(breaks = c(1:8))   # xÃàÀ» 8°³·Î ³ª´©°í ¶óº§À» ÀÔÈü´Ï´Ù.
-ggsave("histogram_col_line_width_brk.jpg", dpi = 300)   # ggplot¸¦ ÀúÀåÇÕ´Ï´Ù.
+## Adjust label of histogram x-axis #######################
+ggplot( Cars93, aes(x=Passengers)) +   # xì¶•: íƒ‘ìŠ¹ì ìˆ˜, íƒ‘ìŠ¹ì ìˆ˜ì— ë”°ë¥¸ ë¶„í¬ë¥¼ ê·¸ë ¤ë´…ë‹ˆë‹¤.
+  geom_histogram(fill="#F8766D", colour="black", binwidth = 0.5) +   # ë‚´ë¶€ ìƒ‰ìƒ, ë¼ì¸ ìƒ‰ìƒ, ë°” ë‘ê»˜ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. 
+  scale_x_continuous(breaks = c(1:8))   # xì¶•ì„ 8ê°œë¡œ ë‚˜ëˆ„ê³  ë¼ë²¨ì„ ì…í™ë‹ˆë‹¤.
+ggsave("histogram_col_line_width_brk.jpg", dpi = 300)   # ggplotë¥¼ ì €ì¥í•©ë‹ˆë‹¤.
 
-ggplot( Cars93, aes(x=Passengers)) +   # xÃà: Å¾½ÂÀÚ ¼ö, Å¾½ÂÀÚ ¼ö¿¡ µû¸¥ ºĞÆ÷¸¦ ±×·Áº¾´Ï´Ù.
-  geom_histogram(fill="#F8766D",  colour="black", bins = 4) +   # ³»ºÎ »ö»ó, ¶óÀÎ »ö»ó, È÷½ºÅä±×·¥À» 4°³·Î ±¸ºĞÇÏµµ·Ï ¼³Á¤ÇÕ´Ï´Ù.
-  scale_x_continuous(breaks = c(2,4,6,8))   # xÃàÀ» 4°³·Î ³ª´©°í ¶óº§À» ÀÔÈü´Ï´Ù
-ggsave("histogram_col_line_width_bin.jpg", dpi = 300)   # ggplot¸¦ ÀúÀåÇÕ´Ï´Ù.
+## Adjust range of histgram ###############################
+ggplot( Cars93, aes(x=Passengers)) +   # xì¶•: íƒ‘ìŠ¹ì ìˆ˜, íƒ‘ìŠ¹ì ìˆ˜ì— ë”°ë¥¸ ë¶„í¬ë¥¼ ê·¸ë ¤ë´…ë‹ˆë‹¤.
+  geom_histogram(fill="#F8766D",  colour="black", bins = 4) +   # ë‚´ë¶€ ìƒ‰ìƒ, ë¼ì¸ ìƒ‰ìƒ, íˆìŠ¤í† ê·¸ë¨ì„ 4ê°œë¡œ êµ¬ë¶„í•˜ë„ë¡ ì„¤ì •í•©ë‹ˆë‹¤.
+  scale_x_continuous(breaks = c(2,4,6,8))   # xì¶•ì„ 4ê°œë¡œ ë‚˜ëˆ„ê³  ë¼ë²¨ì„ ì…í™ë‹ˆë‹¤
+ggsave("histogram_col_line_width_bin.jpg", dpi = 300)   # ggplotë¥¼ ì €ì¥í•©ë‹ˆë‹¤.
 
-ggplot( Cars93, aes(x=Passengers, fill=Origin)) +   # xÃà: Å¾½ÂÀÚ ¼ö, ³»ºÎ Ç×¸ñ: ±â¿ø(¹Ì±¹»êÀÎÁö ¾Æ´ÑÁö), Å¾½ÂÀÚ ¼ö¿Í ±â¿ø¿¡ µû¸¥ ºĞÆ÷¸¦ ±×·Áº¾´Ï´Ù.
-  geom_histogram(binwidth = 0.5) +   # ¹Ù µÎ²²¸¦ ¼³Á¤ÇÕ´Ï´Ù. 
-  scale_x_continuous(breaks = c(1:8))   # xÃàÀ» 8°³·Î ³ª´©°í ¶óº§À» ÀÔÈü´Ï´Ù.
-ggsave("histogram_add_cate.jpg", dpi = 300)   # ggplot¸¦ ÀúÀåÇÕ´Ï´Ù.
+# Add Category in Basic Histogram #########################
+# Stack category ##########################################
+ggplot( Cars93, aes(x=Passengers, fill=Origin)) +   # xì¶•: íƒ‘ìŠ¹ì ìˆ˜, ë‚´ë¶€ í•­ëª©: ê¸°ì›(ë¯¸êµ­ì‚°ì¸ì§€ ì•„ë‹Œì§€), íƒ‘ìŠ¹ì ìˆ˜ì™€ ê¸°ì›ì— ë”°ë¥¸ ë¶„í¬ë¥¼ ê·¸ë ¤ë´…ë‹ˆë‹¤.
+  geom_histogram(binwidth = 0.5) +   # ë°” ë‘ê»˜ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. 
+  scale_x_continuous(breaks = c(1:8))   # xì¶•ì„ 8ê°œë¡œ ë‚˜ëˆ„ê³  ë¼ë²¨ì„ ì…í™ë‹ˆë‹¤.
+ggsave("histogram_add_cate.jpg", dpi = 300)   # ggplotë¥¼ ì €ì¥í•©ë‹ˆë‹¤.
 
-ggplot( Cars93, aes(x=Passengers, fill=Origin)) +   # xÃà: Å¾½ÂÀÚ ¼ö, ³»ºÎ Ç×¸ñ: ±â¿ø(¹Ì±¹»êÀÎÁö ¾Æ´ÑÁö), Å¾½ÂÀÚ ¼ö¿Í ±â¿ø¿¡ µû¸¥ ºĞÆ÷¸¦ ±×·Áº¾´Ï´Ù.
-  geom_histogram(position = "dodge", binwidth = 0.5) +   # ¹Ù µÎ²²¸¦ ¼³Á¤ÇÕ´Ï´Ù. origin Ç×¸ñÀ» °¢°¢ ³ª´²¼­ ±×¸³´Ï´Ù.
-  scale_x_continuous(breaks = c(1:8))   # xÃàÀ» 8°³·Î ³ª´©°í ¶óº§À» ÀÔÈü´Ï´Ù.
-ggsave("histogram_add_cate_dodge.jpg", dpi = 300)   # ggplot¸¦ ÀúÀåÇÕ´Ï´Ù.
+## Dodge category #########################################
+ggplot( Cars93, aes(x=Passengers, fill=Origin)) +   # xì¶•: íƒ‘ìŠ¹ì ìˆ˜, ë‚´ë¶€ í•­ëª©: ê¸°ì›(ë¯¸êµ­ì‚°ì¸ì§€ ì•„ë‹Œì§€), íƒ‘ìŠ¹ì ìˆ˜ì™€ ê¸°ì›ì— ë”°ë¥¸ ë¶„í¬ë¥¼ ê·¸ë ¤ë´…ë‹ˆë‹¤.
+  geom_histogram(position = "dodge", binwidth = 0.5) +   # ë°” ë‘ê»˜ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. origin í•­ëª©ì„ ê°ê° ë‚˜ëˆ ì„œ ê·¸ë¦½ë‹ˆë‹¤.
+  scale_x_continuous(breaks = c(1:8))   # xì¶•ì„ 8ê°œë¡œ ë‚˜ëˆ„ê³  ë¼ë²¨ì„ ì…í™ë‹ˆë‹¤.
+ggsave("histogram_add_cate_dodge.jpg", dpi = 300)   # ggplotë¥¼ ì €ì¥í•©ë‹ˆë‹¤.
 
-ggplot( Cars93, aes(x=Passengers, fill=Origin)) +   # xÃà: Å¾½ÂÀÚ ¼ö, ³»ºÎ Ç×¸ñ: ±â¿ø(¹Ì±¹»êÀÎÁö ¾Æ´ÑÁö), Å¾½ÂÀÚ ¼ö¿Í ±â¿ø¿¡ µû¸¥ ºĞÆ÷¸¦ ±×·Áº¾´Ï´Ù.
-  geom_histogram(position = "fill", binwidth = 0.5) +   # ¹Ù µÎ²²¸¦ ¼³Á¤ÇÕ´Ï´Ù. origin Ç×¸ñÀ» ½×°í Ä«¿îÆ®°¡ ¾Æ´Ñ ºñÀ²·Î ³ªÅ¸³À´Ï´Ù. 
-  scale_x_continuous(breaks = c(1:8))   # xÃàÀ» 8°³·Î ³ª´©°í ¶óº§À» ÀÔÈü´Ï´Ù.
-ggsave("histogram_add_cate_fill.jpg", dpi = 300)   # ggplot¸¦ ÀúÀåÇÕ´Ï´Ù.
+## Fill category ##########################################
+ggplot( Cars93, aes(x=Passengers, fill=Origin)) +   # xì¶•: íƒ‘ìŠ¹ì ìˆ˜, ë‚´ë¶€ í•­ëª©: ê¸°ì›(ë¯¸êµ­ì‚°ì¸ì§€ ì•„ë‹Œì§€), íƒ‘ìŠ¹ì ìˆ˜ì™€ ê¸°ì›ì— ë”°ë¥¸ ë¶„í¬ë¥¼ ê·¸ë ¤ë´…ë‹ˆë‹¤.
+  geom_histogram(position = "fill", binwidth = 0.5) +   # ë°” ë‘ê»˜ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. origin í•­ëª©ì„ ìŒ“ê³  ì¹´ìš´íŠ¸ê°€ ì•„ë‹Œ ë¹„ìœ¨ë¡œ ë‚˜íƒ€ëƒ…ë‹ˆë‹¤. 
+  scale_x_continuous(breaks = c(1:8))   # xì¶•ì„ 8ê°œë¡œ ë‚˜ëˆ„ê³  ë¼ë²¨ì„ ì…í™ë‹ˆë‹¤.
+ggsave("histogram_add_cate_fill.jpg", dpi = 300)   # ggplotë¥¼ ì €ì¥í•©ë‹ˆë‹¤.
 
-ggplot( Cars93, aes(x=Passengers, fill=Origin)) +   # xÃà: Å¾½ÂÀÚ ¼ö, ³»ºÎ Ç×¸ñ: ±â¿ø(¹Ì±¹»êÀÎÁö ¾Æ´ÑÁö), Å¾½ÂÀÚ ¼ö¿Í ±â¿ø¿¡ µû¸¥ ºĞÆ÷¸¦ ±×·Áº¾´Ï´Ù.
-  geom_histogram(position = "dodge", binwidth = 0.5) +   # ¹Ù µÎ²²¸¦ ¼³Á¤ÇÕ´Ï´Ù. origin Ç×¸ñÀ» °¢°¢ ³ª´²¼­ ±×¸³´Ï´Ù.
-  scale_x_continuous(breaks = c(1:8)) +   # xÃàÀ» 8°³·Î ³ª´©°í ¶óº§À» ÀÔÈü´Ï´Ù.
-  facet_grid(AirBags~.)   # airbag ±¸ºĞ¿¡ µû¶ó ±×·¡ÇÁ¸¦ ³ª´²±×¸³´Ï´Ù. ¼¼·Î¸¦ ºĞÇÒÇÕ´Ï´Ù. 
-ggsave("histogram_add_cate_dodge_facet_y.jpg", dpi = 300, width = 5, height = 10)   # ggplot¸¦ ÀúÀåÇÕ´Ï´Ù. ¼¼·Î·Î ±æ°Ô ºñÀ²À» ¸ÂÃß¾îÁİ´Ï´Ù.
+## Devide lay out by category using facet: Vertical #######
+ggplot( Cars93, aes(x=Passengers, fill=Origin)) +   # xì¶•: íƒ‘ìŠ¹ì ìˆ˜, ë‚´ë¶€ í•­ëª©: ê¸°ì›(ë¯¸êµ­ì‚°ì¸ì§€ ì•„ë‹Œì§€), íƒ‘ìŠ¹ì ìˆ˜ì™€ ê¸°ì›ì— ë”°ë¥¸ ë¶„í¬ë¥¼ ê·¸ë ¤ë´…ë‹ˆë‹¤.
+  geom_histogram(position = "dodge", binwidth = 0.5) +   # ë°” ë‘ê»˜ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. origin í•­ëª©ì„ ê°ê° ë‚˜ëˆ ì„œ ê·¸ë¦½ë‹ˆë‹¤.
+  scale_x_continuous(breaks = c(1:8)) +   # xì¶•ì„ 8ê°œë¡œ ë‚˜ëˆ„ê³  ë¼ë²¨ì„ ì…í™ë‹ˆë‹¤.
+  facet_grid(AirBags~.)   # airbag êµ¬ë¶„ì— ë”°ë¼ ê·¸ë˜í”„ë¥¼ ë‚˜ëˆ ê·¸ë¦½ë‹ˆë‹¤. ì„¸ë¡œë¥¼ ë¶„í• í•©ë‹ˆë‹¤. 
+ggsave("histogram_add_cate_dodge_facet_y.jpg", dpi = 300, width = 5, height = 10)   # ggplotë¥¼ ì €ì¥í•©ë‹ˆë‹¤. ì„¸ë¡œë¡œ ê¸¸ê²Œ ë¹„ìœ¨ì„ ë§ì¶”ì–´ì¤ë‹ˆë‹¤.
 
-ggplot( Cars93, aes(x=Passengers, fill=Origin)) +   # xÃà: Å¾½ÂÀÚ ¼ö, ³»ºÎ Ç×¸ñ: ±â¿ø(¹Ì±¹»êÀÎÁö ¾Æ´ÑÁö), Å¾½ÂÀÚ ¼ö¿Í ±â¿ø¿¡ µû¸¥ ºĞÆ÷¸¦ ±×·Áº¾´Ï´Ù.
-  geom_histogram(position = "dodge", binwidth = 0.5) +   # ¹Ù µÎ²²¸¦ ¼³Á¤ÇÕ´Ï´Ù. origin Ç×¸ñÀ» °¢°¢ ³ª´²¼­ ±×¸³´Ï´Ù.
-  scale_x_continuous(breaks = c(1:8)) +   # xÃàÀ» 8°³·Î ³ª´©°í ¶óº§À» ÀÔÈü´Ï´Ù.
-  facet_grid(.~AirBags)   # airbag ±¸ºĞ¿¡ µû¶ó ±×·¡ÇÁ¸¦ ³ª´²±×¸³´Ï´Ù. °¡·Î¸¦ ºĞÇÒÇÕ´Ï´Ù.
-ggsave("histogram_add_cate_dodge_facet_x.jpg", dpi = 300, width = 10, height = 5)   # ggplot¸¦ ÀúÀåÇÕ´Ï´Ù. °¡·Î·Î ±æ°Ô ºñÀ²À» ¸ÂÃß¾îÁİ´Ï´Ù.
+## Devide lay out by category using facet: Horizontal #####
+ggplot( Cars93, aes(x=Passengers, fill=Origin)) +   # xì¶•: íƒ‘ìŠ¹ì ìˆ˜, ë‚´ë¶€ í•­ëª©: ê¸°ì›(ë¯¸êµ­ì‚°ì¸ì§€ ì•„ë‹Œì§€), íƒ‘ìŠ¹ì ìˆ˜ì™€ ê¸°ì›ì— ë”°ë¥¸ ë¶„í¬ë¥¼ ê·¸ë ¤ë´…ë‹ˆë‹¤.
+  geom_histogram(position = "dodge", binwidth = 0.5) +   # ë°” ë‘ê»˜ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. origin í•­ëª©ì„ ê°ê° ë‚˜ëˆ ì„œ ê·¸ë¦½ë‹ˆë‹¤.
+  scale_x_continuous(breaks = c(1:8)) +   # xì¶•ì„ 8ê°œë¡œ ë‚˜ëˆ„ê³  ë¼ë²¨ì„ ì…í™ë‹ˆë‹¤.
+  facet_grid(.~AirBags)   # airbag êµ¬ë¶„ì— ë”°ë¼ ê·¸ë˜í”„ë¥¼ ë‚˜ëˆ ê·¸ë¦½ë‹ˆë‹¤. ê°€ë¡œë¥¼ ë¶„í• í•©ë‹ˆë‹¤.
+ggsave("histogram_add_cate_dodge_facet_x.jpg", dpi = 300, width = 10, height = 5)   # ggplotë¥¼ ì €ì¥í•©ë‹ˆë‹¤. ê°€ë¡œë¡œ ê¸¸ê²Œ ë¹„ìœ¨ì„ ë§ì¶”ì–´ì¤ë‹ˆë‹¤.
 
-air_levels <- levels(Cars93$AirBags)   # airbag levelÀ» ÀúÀåÇØµÓ´Ï´Ù.
-Cars93$AirBags <- as.numeric(Cars93$AirBags)   # factorÀÎ airbag columnÀ» ¼ıÀÚ·Î º¯È¯ÇÕ´Ï´Ù. 
+# Histogram with categorical data #########################
+air_levels <- levels(Cars93$AirBags)   # airbag levelì„ ì €ì¥í•´ë‘¡ë‹ˆë‹¤.
+Cars93$AirBags <- as.numeric(Cars93$AirBags)   # factorì¸ airbag columnì„ ìˆ«ìë¡œ ë³€í™˜í•©ë‹ˆë‹¤. 
 
-ggplot( Cars93, aes(x=AirBags, fill=Origin)) +   # xÃà: airbag ±¸ºĞ, ³»ºÎ Ç×¸ñ: ±â¿ø(¹Ì±¹»êÀÎÁö ¾Æ´ÑÁö), airbag°ú ±â¿ø¿¡ µû¸¥ ºĞÆ÷¸¦ ±×·Áº¾´Ï´Ù.
-  geom_histogram(position = "dodge", binwidth = 0.5) +   # ¹Ù µÎ²²¸¦ ¼³Á¤ÇÕ´Ï´Ù. origin Ç×¸ñÀ» °¢°¢ ³ª´²¼­ ±×¸³´Ï´Ù.
-  scale_x_continuous(breaks = c(1:3), labels = c(air_levels))   # airbagÀÌ 3°³ÀÇ level·Î Çü¼ºµÇ¾î ÀÖÀ¸¹Ç·Î xÃàÀ» 3°³·Î ³ª´©°í ¾Æ±î ÀúÀåÇØµÎ¾ú´ø ¶óº§ ¸íÄªÀ¸·Î ¶óº§À» ÀÔÈü´Ï´Ù.
-ggsave("histogram_factor.jpg", dpi = 300)   # ggplot¸¦ ÀúÀåÇÕ´Ï´Ù.
+ggplot( Cars93, aes(x=AirBags, fill=Origin)) +   # xì¶•: airbag êµ¬ë¶„, ë‚´ë¶€ í•­ëª©: ê¸°ì›(ë¯¸êµ­ì‚°ì¸ì§€ ì•„ë‹Œì§€), airbagê³¼ ê¸°ì›ì— ë”°ë¥¸ ë¶„í¬ë¥¼ ê·¸ë ¤ë´…ë‹ˆë‹¤.
+  geom_histogram(position = "dodge", binwidth = 0.5) +   # ë°” ë‘ê»˜ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. origin í•­ëª©ì„ ê°ê° ë‚˜ëˆ ì„œ ê·¸ë¦½ë‹ˆë‹¤.
+  scale_x_continuous(breaks = c(1:3), labels = c(air_levels))   # airbagì´ 3ê°œì˜ levelë¡œ í˜•ì„±ë˜ì–´ ìˆìœ¼ë¯€ë¡œ xì¶•ì„ 3ê°œë¡œ ë‚˜ëˆ„ê³  ì•„ê¹Œ ì €ì¥í•´ë‘ì—ˆë˜ ë¼ë²¨ ëª…ì¹­ìœ¼ë¡œ ë¼ë²¨ì„ ì…í™ë‹ˆë‹¤.
+ggsave("histogram_factor.jpg", dpi = 300)   # ggplotë¥¼ ì €ì¥í•©ë‹ˆë‹¤.
 
-ggplot( minn38, aes(x=hs, y=f, fill=phs)) +   # xÃà: °íµîÇĞ±³ ·©Å©, yÃà: ºóµµ, ³»ºÎ Ç×¸ñ: Á¹¾÷ ÈÄ »óÅÂ, °íµîÇĞ±³ ·©Å©¿Í Á¹¾÷ ÈÄ »óÅÂÀÇ ºĞÆ÷¸¦ ±×·Áº¾´Ï´Ù. 
-  geom_bar(position = "dodge", width = 0.5, stat = "identity")   # ¹Ù µÎ²²¸¦ ¼³Á¤ÇÕ´Ï´Ù. phs Ç×¸ñÀ» °¢°¢ ³ª´²¼­ ±×¸³´Ï´Ù. hsÀÇ °ªµéÀ» ÇÏ³ªÀÇ Ç×¸ñÀ¸·Î ÀÎ½ÄÇÕ´Ï´Ù. 
-ggsave("barplot_like_histogram.jpg", dpi = 300)   # ggplot¸¦ ÀúÀåÇÕ´Ï´Ù.
+# Bar Plot like Histogram #################################
+ggplot( minn38, aes(x=hs, y=f, fill=phs)) +   # xì¶•: ê³ ë“±í•™êµ ë­í¬, yì¶•: ë¹ˆë„, ë‚´ë¶€ í•­ëª©: ì¡¸ì—… í›„ ìƒíƒœ, ê³ ë“±í•™êµ ë­í¬ì™€ ì¡¸ì—… í›„ ìƒíƒœì˜ ë¶„í¬ë¥¼ ê·¸ë ¤ë´…ë‹ˆë‹¤. 
+  geom_bar(position = "dodge", width = 0.5, stat = "identity")   # ë°” ë‘ê»˜ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. phs í•­ëª©ì„ ê°ê° ë‚˜ëˆ ì„œ ê·¸ë¦½ë‹ˆë‹¤. hsì˜ ê°’ë“¤ì„ í•˜ë‚˜ì˜ í•­ëª©ìœ¼ë¡œ ì¸ì‹í•©ë‹ˆë‹¤. 
+ggsave("barplot_like_histogram.jpg", dpi = 300)   # ggplotë¥¼ ì €ì¥í•©ë‹ˆë‹¤.
