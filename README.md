@@ -19,4 +19,6 @@ R code for drawing hisogram with ggplot2 package
 
 ## Histogram with categorical data
 
+## Bar Plot like Histogram
+
 For more information on the blog: http://nife0719.blog.me/221004203291
