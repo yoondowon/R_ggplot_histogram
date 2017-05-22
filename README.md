@@ -2,6 +2,15 @@
 R code for drawing hisogram with ggplot2 package
 
 ## 기본 히스토그램 그리기
+```{r echo = FALSE, results = 'asis', warning=FALSE}
+library(ggplot2)
+library(MASS)
+
+data("Cars93")   # MASS 패키지에서 Cars93 데이터를 가져옵니다.
+data("minn38")   # MASS 패키지에서 minn98 데이터를 가져옵니다.
+ggplot( Cars93, aes(x=Passengers)) +   # x축: 탑승자 수, 탑승자 수에 따른 분포를 그려봅니다.
+  geom_histogram() 
+```
 
 ## 기본 히스토그램 커스텀화하기
 #### - 색상 추가하기 
