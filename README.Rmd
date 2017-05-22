@@ -1,6 +1,6 @@
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knit::opts_chunk$set(echo = TRUE)
 ```
 
 # R_ggplot_histogram
