@@ -1,13 +1,8 @@
-
-```{r setup, include=FALSE}
-knit::opts_chunk$set(echo = TRUE)
-```
-
 # R_ggplot_histogram
 R code for drawing hisogram with ggplot2 package
 
 ## 1
-```{r cars}
+```r
 library(ggplot2)
 library(MASS)
 
