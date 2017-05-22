@@ -4,7 +4,7 @@ R code for drawing hisogram with ggplot2 package
 ## 기본 히스토그램 그리기
 
 ## 기본 히스토그램 커스텀화하기
-### 색상 추가하기 
+#### 색상 추가하기 
 ### 선 추가하기 
 ### 두께 조절하기 
 ### X축 라벨링하기 
